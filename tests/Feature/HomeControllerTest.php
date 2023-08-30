@@ -17,7 +17,6 @@ class HomeControllerTest extends TestCase
     public function test_get_solution_post_addition(): void
     {
         $payload = [
-            '_token' => csrf_token(),
             'number1' => 1,
             'number2' => 2,
             'mathType' => 'addition'
@@ -31,7 +30,6 @@ class HomeControllerTest extends TestCase
     public function test_get_solution_post_subtraction(): void
     {
         $payload = [
-            '_token' => csrf_token(),
             'number1' => 10,
             'number2' => 5,
             'mathType' => 'subtraction'
@@ -45,7 +43,6 @@ class HomeControllerTest extends TestCase
     public function test_get_solution_post_multiplication(): void
     {
         $payload = [
-            '_token' => csrf_token(),
             'number1' => 2,
             'number2' => 3,
             'mathType' => 'multiplication'
@@ -59,7 +56,6 @@ class HomeControllerTest extends TestCase
     public function test_get_solution_post_division(): void
     {
         $payload = [
-            '_token' => csrf_token(),
             'number1' => 10,
             'number2' => 2,
             'mathType' => 'division'
@@ -73,7 +69,6 @@ class HomeControllerTest extends TestCase
     public function test_get_solution_post_division_by_zero(): void
     {
         $payload = [
-            '_token' => csrf_token(),
             'number1' => 10,
             'number2' => 0,
             'mathType' => 'division'

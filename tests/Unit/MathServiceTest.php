@@ -14,6 +14,7 @@ class MathServiceTest extends TestCase
     {
         $result = (new MathService())->doMath(1.0, 2.0, 'addition');
         $this->assertEquals(3, $result);
+        $this->assertIsFloat($result);
     }
 
     /**
@@ -23,6 +24,7 @@ class MathServiceTest extends TestCase
     {
         $result = (new MathService())->doMath(3, 2, 'subtraction');
         $this->assertEquals(1, $result);
+        $this->assertIsFloat($result);
     }
 
     /**
@@ -32,6 +34,7 @@ class MathServiceTest extends TestCase
     {
         $result = (new MathService())->doMath(2, 2, 'multiplication');
         $this->assertEquals(4, $result);
+        $this->assertIsFloat($result);
     }
 
     /**
@@ -41,6 +44,7 @@ class MathServiceTest extends TestCase
     {
         $result = (new MathService())->doMath(9, 3, 'division');
         $this->assertEquals(3, $result);
+        $this->assertIsFloat($result);
     }
 
     /**
@@ -50,5 +54,6 @@ class MathServiceTest extends TestCase
     {
         $result = (new MathService())->doMath(24283, 0, 'division');
         $this->assertEquals(0, $result);
+        $this->assertIsFloat($result);
     }
 }

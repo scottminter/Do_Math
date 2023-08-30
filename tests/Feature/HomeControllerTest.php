@@ -8,9 +8,6 @@ use Tests\TestCase;
 
 class HomeControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
     public function test_home(): void
     {
         $response = $this->get('/');
@@ -26,9 +23,9 @@ class HomeControllerTest extends TestCase
             'mathType' => 'addition'
         ];
 
-        $this->json('POST', '/get-solution', $payload)
-            ->assertStatus(302)
-            ->assertRedirect('/?number1=' . $payload['number1'] . '&number2=' . $payload['number2'] . '&math-type=' . $payload['mathType'] . '&solution=3');
+        $response = $this->post('/get-solution', $payload);
+        $response->assertStatus(302);
+        $response->assertRedirect('/?number1=' . $payload['number1'] . '&number2=' . $payload['number2'] . '&math-type=' . $payload['mathType'] . '&solution=3');
     }
 
     public function test_get_solution_post_subtraction(): void
@@ -54,9 +51,9 @@ class HomeControllerTest extends TestCase
             'mathType' => 'multiplication'
         ];
 
-        $this->json('POST', '/get-solution', $payload)
-            ->assertStatus(302)
-            ->assertRedirect('/?number1=' . $payload['number1'] . '&number2=' . $payload['number2'] . '&math-type=' . $payload['mathType'] . '&solution=6');
+        $response = $this->post('/get-solution', $payload);
+        $response->assertStatus(302);
+        $response->assertRedirect('/?number1=' . $payload['number1'] . '&number2=' . $payload['number2'] . '&math-type=' . $payload['mathType'] . '&solution=6');
     }
 
     public function test_get_solution_post_division(): void
@@ -68,9 +65,9 @@ class HomeControllerTest extends TestCase
             'mathType' => 'division'
         ];
 
-        $this->json('POST', '/get-solution', $payload)
-            ->assertStatus(302)
-            ->assertRedirect('/?number1=' . $payload['number1'] . '&number2=' . $payload['number2'] . '&math-type=' . $payload['mathType'] . '&solution=5');
+        $response = $this->post('/get-solution', $payload);
+        $response->assertStatus(302);
+        $response->assertRedirect('/?number1=' . $payload['number1'] . '&number2=' . $payload['number2'] . '&math-type=' . $payload['mathType'] . '&solution=5');
     }
 
     public function test_get_solution_post_division_by_zero(): void
@@ -82,8 +79,8 @@ class HomeControllerTest extends TestCase
             'mathType' => 'division'
         ];
 
-        $this->json('POST', '/get-solution', $payload)
-            ->assertStatus(302)
-            ->assertRedirect('/?number1=' . $payload['number1'] . '&number2=' . $payload['number2'] . '&math-type=' . $payload['mathType'] . '&solution=0');
+        $response = $this->post('/get-solution', $payload);
+        $response->assertStatus(302);
+        $response->assertRedirect('/?number1=' . $payload['number1'] . '&number2=' . $payload['number2'] . '&math-type=' . $payload['mathType'] . '&solution=0');
     }
 }

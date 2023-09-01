@@ -11,7 +11,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $requestParams = $this->app->request->all();
+
+        if (!array_key_exists('rightOrWrong', $requestParams) || $requestParams['rightOrWrong'] == 'right') {
+            $this->app->bind(\App\Interfaces\IMathService::class, \App\Services\DoMathRightService::class);
+        } else {
+            $this->app->bind(\App\Interfaces\IMathService::class, \App\Services\DoMathWrongService::class);
+        }
     }
 
     /**

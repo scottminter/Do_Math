@@ -32,35 +32,50 @@
     </script>
 
     <div class="container">
-        <div class="h1 text-center mt-3">Do Math</div>
-        <hr>
-        <div class="">
-            <form action="/get-solution" method="post">
+        <form action="/get-solution" method="post">
+            <div class="row mt-5">
+                <div class="h1 col-sm-6 text-end">Do Math</div>
+                <div class="col-sm-6">
+                    <select name="rightOrWrong" id="rightOrWrong" class="form-control-lg mathNumber">
+                        <option value="right"
+                            {{ !$data->rightOrWrong || $data->rightOrWrong == 'right' ? 'selected' : '' }}>
+                            Right
+                        </option>
+                        <option value="wrong"
+                            {{ $data->rightOrWrong && $data->rightOrWrong == 'wrong' ? 'selected' : '' }}>Wrong
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="">
+
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="col-sm-3">
                     <input type="text" name="number1" id="number1" class="form-control-lg mathNumber"
-                        value="{{ $number1 }}">
+                        value="{{ $data->number1 }}" placeholder="Number 1">
                 </div>
                 <div class="col-sm-3 mt-3">
                     <select name="mathType" id="mathType" class="form-select mathNumber">
-                        <option value="addition" {{ $mathType == 'addition' ? 'selected' : '' }}> + </option>
-                        <option value="subtraction" {{ $mathType == 'subtraction' ? 'selected' : '' }}> - </option>
-                        <option value="multiplication" {{ $mathType == 'multiplication' ? 'selected' : '' }}> *
+                        <option value="addition" {{ $data->mathType == 'addition' ? 'selected' : '' }}> + </option>
+                        <option value="subtraction" {{ $data->mathType == 'subtraction' ? 'selected' : '' }}> -
                         </option>
-                        <option value="division" {{ $mathType == 'division' ? 'selected' : '' }}> / </option>
+                        <option value="multiplication" {{ $data->mathType == 'multiplication' ? 'selected' : '' }}> *
+                        </option>
+                        <option value="division" {{ $data->mathType == 'division' ? 'selected' : '' }}> / </option>
                     </select>
                 </div>
                 <div class="col-sm-3 mt-3">
                     <input type="text" name="number2" id="number2" class="form-control-lg mathNumber"
-                        value="{{ $number2 }}">
+                        value="{{ $data->number2 }}" placeholder="Number 2">
                 </div>
                 <hr>
                 <div class="col-sm-3 fs-3 mt-3">
-                    = {{ $solution }}
+                    = {{ $data->solution }}
                 </div>
                 <button type="submit" id="mathSubmit" class="btn btn-primary mt-3" disabled>Submit</button>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </body>
 

@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
-class MathService
+use App\Interfaces\IMathService;
+
+abstract class MathService implements IMathService
 {
     public function __construct()
     {
@@ -30,27 +32,8 @@ class MathService
         return $returnValue;
     }
 
-    protected function addition(float $num1, float $num2): float
-    {
-        return $num1 + $num2;
-    }
-
-    protected function subtraction(float $num1, float $num2): float
-    {
-        return $num1 - $num2;
-    }
-
-    protected function multiplication(float $num1, float $num2): float
-    {
-        return $num1 * $num2;
-    }
-
-    protected function division(float $num1, float $num2): float
-    {
-        if ($num2 == 0) {
-            return 0.0;
-        }
-
-        return $num1 / $num2;
-    }
+    abstract function addition(float $num1, float $num2): float;
+    abstract function subtraction(float $num1, float $num2): float;
+    abstract function multiplication(float $num1, float $num2): float;
+    abstract function division(float $num1, float $num2): float;
 }

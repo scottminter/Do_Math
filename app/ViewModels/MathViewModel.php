@@ -2,7 +2,7 @@
 
 namespace App\ViewModels;
 
-class HomeViewModel
+class MathViewModel
 {
     public ?float $number1;
     public ?float $number2;

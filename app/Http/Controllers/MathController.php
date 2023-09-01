@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Interfaces\IMathService;
-use App\ViewModels\HomeViewModel;
+use App\ViewModels\MathViewModel;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -20,11 +20,11 @@ class MathController extends Controller
     {
         $num1 = $request->input('number1');
         $num2 = $request->input('number2');
-        $mathType = $request->input('math');
+        $mathType = $request->input('math-type');
         $solution = $request->input('solution');
         $rightOrWrongSolution = $request->input('rightorwrong');
 
-        $viewModel = new HomeViewModel(
+        $viewModel = new MathViewModel(
             $num1,
             $num2,
             $solution,
@@ -48,7 +48,7 @@ class MathController extends Controller
         return to_route('home', [
             'number1' => $num1,
             'number2' => $num2,
-            'math' => $mathType,
+            'math-type' => $mathType,
             'solution' => $solution,
             'rightorwrong' => $rightOrWrongSolution
         ]);

@@ -2,9 +2,7 @@
 
 namespace Tests\Feature;
 
-use Exception;
 use Tests\TestCase;
-use Throwable;
 
 class MathControllerTest extends TestCase
 {
